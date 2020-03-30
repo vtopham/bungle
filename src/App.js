@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+//If you're going to touch this code, check with the other person!! for the love of god!!
+import React, {useState} from 'react';
 import './App.css';
+import {Route} from "react-router-dom"
+
+import Home from "./Components/Home"
+import About from "./Components/About"
+import Restaurant from "./Components/Restaurant"
+import Results from "./Components/Results"
+
 
 function App() {
+
+  const [location, setLocation] = useState("Los-Vegas-NV");
+  const [restaurantID, setRestaurantID] = useState("800");
+  console.log(restaurantID);
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Route exact path = "/">
+      <Home location = {location} setLocation = {setLocation}/>
+    </Route>
+
+    <Route path = "/about">
+      <About />
+    </Route>
+
+  <Route exact path = "/:location"> {/*I figured we could have the alias include the state for future functionality*/}
+      <Results location = {location} setLocation = {setLocation} restaurantID = {restaurantID} setRestaurantID = {setRestaurantID}/>
+    </Route>
+
+    <Route path = "/:location/:restaurantID"> {/*I... think this works? lol*/}
+      <Restaurant />
+    </Route>
+    </>
   );
 }
 
