@@ -14,13 +14,15 @@ function App() {
   const [location, setLocation] = useState("Los-Vegas-NV"); //should be city-state with kabob casing
   const [restaurantID, setRestaurantID] = useState("800"); //this will be the number that zomato uses
   console.log(restaurantID);
+  const [cuisineID, setCuisineID] = useState("12");
+  const [zSearchResults, setZSearchResults] = useState("");
 
   
 
   return (
     <>
     <Route exact path = "/">
-      <Home location = {location} setLocation = {setLocation}/>
+      <Home location = {location} setLocation = {setLocation} cuisineID = {cuisineID} setCuisineID = {setCuisineID} zSearchResults = {zSearchResults} setZSearchResults = {setZSearchResults}/>
     </Route>
 
     <Route path = "/about">
@@ -28,7 +30,7 @@ function App() {
     </Route>
 
   <Route exact path = "/:location"> {/*matches up with state*/}
-      <Results location = {location} setLocation = {setLocation} restaurantID = {restaurantID} setRestaurantID = {setRestaurantID}/>
+      <Results location = {location} setLocation = {setLocation} restaurantID = {restaurantID} setRestaurantID = {setRestaurantID} zSearchResults = {zSearchResults}/>
     </Route>
 
     <Route path = "/:location/:restaurantID"> 

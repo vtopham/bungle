@@ -40,7 +40,7 @@ function Search (props) {
 
     //on change function
 
-    const updateLocation = (event) => {
+    const updateCity = (event) => {
         
     }
 
