@@ -22,5 +22,21 @@ header {
     justify-content: space-between;
     padding: 1rem 1rem 0;
     align-items: center;
+
+    h1 {
+      a {
+        font-size: 1.5rem;
+      }
+    }
   }
+}
+
+// END OF HEADER
+
+////// RESULTS CONTIANER STARTS HERE
+
+.result-container {
+  border: 1px solid red;
+  max-width: 1400px;
+  margin: 3rem auto;
 }

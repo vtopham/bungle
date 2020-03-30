@@ -8,7 +8,9 @@ function Header() {
   return (
     <header>
       <div className="header-container">
-        <h1>logo</h1>
+        <h1>
+          <NavLink to="/">Logo</NavLink>
+        </h1>
         <nav>
           <NavLink to="/about">About</NavLink>
         </nav>
