@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+header {
+  border: 1px solid red;
+  height: 15vh;
+
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0;
+    align-items: center;
+
+    h1 {
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// END OF HEADER
+
+////// RESULTS CONTIANER STARTS HERE
+
+.result-container {
+  border: 1px solid red;
+  max-width: 1400px;
+  margin: 3rem auto;
+}
