@@ -2,12 +2,18 @@
 //Only Anthony changes this code
 
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-function Header(props) {
+function Header() {
   return (
-    <>
-      <p>This is the header</p>
-    </>
+    <header>
+      <div className="header-container">
+        <h1>logo</h1>
+        <nav>
+          <NavLink to="/about">About</NavLink>
+        </nav>
+      </div>
+    </header>
   );
 }
 
