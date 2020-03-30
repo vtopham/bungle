@@ -1,7 +1,9 @@
 //Only Vic changes this code
 
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styled from "styled-components"
+import axios from "axios"
+
 
 
 const SearchForm = styled.form`
@@ -32,18 +34,37 @@ function Search (props) {
 
     //Set up the drop-downs
     const cities = {
-        "Los-Angeles-CA": "Los Angeles, CA",
-        "Las-Vegas-NV": "Las Vegas, NV"
+        281: "Los Angeles, CA",
+        282: "Las Vegas, NV"
     }
 
-    const cuisines = ["Mexican", "Italian", "Japanese"]
+    const [cuisines, setCuisines] = useState([])
 
-    //on change function
+    const header = { //header for the axios request
+        method: 'GET',
+        headers: {
+            'user-key': '392a6e06ccc0d5d88a95d732a6bfc55d',
+            'Content-type': 'application.json',
+        },
+        credentials: 'same-origin'
+    }
+
+    //update the location when the city is updated
 
     const updateCity = (event) => {
-        
+      setLocation(event.target.value);  
     }
 
+    //When the city is updated, do a get request and get a list of all cuisines
+
+    useEffect(() => {
+        axios.get("https://developers.zomato.com/api/v2.1/cuisines?city_id=281", header)
+        .then((response) => {
+            console.log(response.data.cuisines)
+            setCuisines(response.data.cuisines)
+            
+        })
+    },[location])
 
     const array = [1,2,3]
     return(
@@ -52,7 +73,7 @@ function Search (props) {
         <SearchForm>
             <SearchDiv> 
                 <label htmlFor = "city">City</label>
-                <select  id = "city" name = "city" placeholder = "Las Vegas, NV">
+                <select  onChange = {updateCity} id = "city" name = "city" placeholder = "Las Vegas, NV">
                     {Object.keys(cities).map((key) => { {/*add all the cities from our hard coded object*/}
                         return (<option value = {key}>{cities[key]}</option>
                     )})}
@@ -61,9 +82,14 @@ function Search (props) {
             <SearchDiv>
                 <label htmlFor = "cuisine">Cuisine</label>
                 <select id = "cuisine" name = "cuisine" placeholder = "Italian">
-                    {cuisines.map((item) => { {/*add all the cuisines from our hard coded array*/}
-                        return (<option value = {item}>{item}</option>)
+                    {/* {Object.keys(cuisines).map((key) => {
+                        return (<option value = {key}>{cuisines[key]}</option>)
+                    })} */}
+                    {cuisines.map((item) => {
+                        return (<option value = {item.cuisine.cuisine_id}>{item.cuisine.cuisine_name}</option>)
+                        
                     })}
+
                 </select>
             </SearchDiv>
             <SearchDiv>
