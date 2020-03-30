@@ -12,7 +12,7 @@ function Home (props) {
     return(
         <>
         <p>This is the home page</p>
-        <Search/>
+        <Search location = {location} setLocation = {setLocation}/>
         <Link to = {`/${location}`}>Go To Results</Link> {/*EXAMPLE LINK*/}
         </>
     )

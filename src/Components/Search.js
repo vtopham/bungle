@@ -10,12 +10,10 @@ const SearchForm = styled.form`
     align-items: flex-end;
 
 `
-
 const SearchDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 30%;
-    
 
 `
 const LetsGo = styled.button`
@@ -30,12 +28,22 @@ const LetsGo = styled.button`
 
 function Search (props) {
 
+    const {location, setLocation} = props
+
+    //Set up the drop-downs
     const cities = {
         "Los-Angeles-CA": "Los Angeles, CA",
         "Las-Vegas-NV": "Las Vegas, NV"
     }
 
     const cuisines = ["Mexican", "Italian", "Japanese"]
+
+    //on change function
+
+    const updateLocation = (event) => {
+        
+    }
+
 
     const array = [1,2,3]
     return(
