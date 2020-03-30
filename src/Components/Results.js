@@ -10,7 +10,19 @@ function Results(props) {
   return (
     <div className="result-container">
       <div className="single-card">
-        <p>hello</p>
+        <h3>restaurant's name</h3>
+        <div className="rating">
+          <span>rating</span>
+          <span>icons here 3.1</span>
+        </div>
+        <div className="reviews">
+          <p>review one</p>
+          <p>review two</p>
+        </div>
+
+        <div className="more">
+          <Link to={`${url}/${restaurantID}`}>see more</Link>
+        </div>
       </div>
     </div>
   );
