@@ -11,10 +11,9 @@ import Results from "./Components/Results"
 
 function App() {
 
-  const [location, setLocation] = useState("Los-Vegas-NV"); //should be city-state with kabob casing
+  const [location, setLocation] = useState(281); //should be city-state with kabob casing
   const [restaurantID, setRestaurantID] = useState("800"); //this will be the number that zomato uses
-  console.log(restaurantID);
-  const [cuisineID, setCuisineID] = useState("12");
+  const [cuisineID, setCuisineID] = useState(201);
   const [zSearchResults, setZSearchResults] = useState("");
 
   

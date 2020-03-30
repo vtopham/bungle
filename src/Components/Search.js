@@ -30,7 +30,7 @@ const LetsGo = styled.button`
 
 function Search (props) {
 
-    const {location, setLocation} = props
+    const {location, setLocation, cuisineID, setCuisineID, zSearchResults, setZSearchResults} = props
 
     //Set up the drop-downs
     const cities = {
@@ -49,10 +49,14 @@ function Search (props) {
         credentials: 'same-origin'
     }
 
-    //update the location when the city is updated
+    //update the location when the city is updated & cuisine
 
     const updateCity = (event) => {
       setLocation(event.target.value);  
+    }
+
+    const updateCuisine = (event) => {
+        setCuisineID(event.target.value)
     }
 
     //When the city is updated, do a get request and get a list of all cuisines
@@ -60,11 +64,18 @@ function Search (props) {
     useEffect(() => {
         axios.get("https://developers.zomato.com/api/v2.1/cuisines?city_id=281", header)
         .then((response) => {
-            console.log(response.data.cuisines)
             setCuisines(response.data.cuisines)
-            
         })
     },[location])
+
+    //When the cuisine is chosen, query for the search **NOT EFFICIENT, DON'T CARE FOR NOW, WE GET 1000 CALLS A DAY**
+
+    useEffect(() => {
+        axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&cuisines=${cuisineID}&sort=rating&order=asc`, header)
+        .then((response) => {
+            setZSearchResults(response.data.restaurants)
+        })
+    },[cuisineID])
 
     const array = [1,2,3]
     return(
@@ -81,7 +92,7 @@ function Search (props) {
             </SearchDiv>
             <SearchDiv>
                 <label htmlFor = "cuisine">Cuisine</label>
-                <select id = "cuisine" name = "cuisine" placeholder = "Italian">
+                <select onChange = {updateCuisine} id = "cuisine" name = "cuisine" placeholder = "Italian">
                     {/* {Object.keys(cuisines).map((key) => {
                         return (<option value = {key}>{cuisines[key]}</option>)
                     })} */}
