@@ -1,21 +1,23 @@
 //Only Anthony changes this code
-import React from "react"
-import {useParams, useRouteMatch, Link} from "react-router-dom"
+import React from "react";
+import { useParams, useRouteMatch, Link } from "react-router-dom";
 
+function Results(props) {
+  const { location, setLocation, restaurantID, setRestaurantID } = props;
 
-function Results (props) {
+  const { path, url } = useRouteMatch();
 
-
-    const {location, setLocation, restaurantID, setRestaurantID} = props
-
-    const {path, url} = useRouteMatch();
-
-    return(
-        <>
-        <p>This is the results page</p>
-        <Link to = {`${url}/${restaurantID}`}>Link to restaurant page</Link> {/*EXAMPLE LINK*/}
-        </>
-    )
+  return (
+    <div className="result-container">
+      <div className="single-card">
+        <p>hello</p>
+      </div>
+    </div>
+  );
 }
 
-export default Results
+export default Results;
+
+// <Link to={`${url}/${restaurantID}`}>card</Link> {/*EXAMPLE LINK*/ }
+
+////
