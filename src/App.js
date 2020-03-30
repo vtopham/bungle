@@ -11,8 +11,8 @@ import Results from "./Components/Results"
 
 function App() {
 
-  const [location, setLocation] = useState("Los-Vegas-NV");
-  const [restaurantID, setRestaurantID] = useState("800");
+  const [location, setLocation] = useState("Los-Vegas-NV"); //should be city-state with kabob casing
+  const [restaurantID, setRestaurantID] = useState("800"); //this will be the number that zomato uses
   console.log(restaurantID);
 
   
@@ -27,11 +27,11 @@ function App() {
       <About />
     </Route>
 
-  <Route exact path = "/:location"> {/*I figured we could have the alias include the state for future functionality*/}
+  <Route exact path = "/:location"> {/*matches up with state*/}
       <Results location = {location} setLocation = {setLocation} restaurantID = {restaurantID} setRestaurantID = {setRestaurantID}/>
     </Route>
 
-    <Route path = "/:location/:restaurantID"> {/*I... think this works? lol*/}
+    <Route path = "/:location/:restaurantID"> 
       <Restaurant />
     </Route>
     </>

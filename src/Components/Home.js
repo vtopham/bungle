@@ -11,7 +11,7 @@ function Home (props) {
     return(
         <>
         <p>This is the home page</p>
-        <Link to = {`/${location}`}>Go To Results</Link>
+        <Link to = {`/${location}`}>Go To Results</Link> {/*EXAMPLE LINK*/}
         </>
     )
 }

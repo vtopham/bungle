@@ -13,7 +13,7 @@ function Results (props) {
     return(
         <>
         <p>This is the results page</p>
-        <Link to = {`${url}/${restaurantID}`}>Link to restaurant page</Link>
+        <Link to = {`${url}/${restaurantID}`}>Link to restaurant page</Link> {/*EXAMPLE LINK*/}
         </>
     )
 }
