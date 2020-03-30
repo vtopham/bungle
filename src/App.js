@@ -25,7 +25,7 @@ function App() {
         <About />
       </Route>
 
-      <Route exact path="/:location">
+      <Route exact path="/search/:location">
         {" "}
         {/*matches up with state*/}
         <Results
@@ -36,7 +36,7 @@ function App() {
         />
       </Route>
 
-      <Route path="/:location/:restaurantID">
+      <Route path="/seacrch/:location/:restaurantID">
         <Restaurant />
       </Route>
     </>
