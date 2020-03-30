@@ -52,7 +52,7 @@ header {
   justify-content: space-around;
   flex-wrap: wrap;
   max-width: 1400px;
-  margin: 3rem auto;
+  margin: 7rem auto;
 
   .single-card {
     border: 1px solid blue;
@@ -119,3 +119,82 @@ header {
 }
 
 ///// END OF RESULTS CONTAINER
+
+//// ABOUT PAGE STARTS HERE
+
+.about-container {
+  border: 1px solid red;
+  width: 1400px;
+  margin: 7rem auto;
+
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .profile {
+      width: 45%;
+      border: 1px solid blue;
+      text-transform: capitalize;
+
+      .bg-img {
+        //   padding: 9rem 0;
+        width: 300px;
+        border: 1px solid red;
+        //   border-radius: 50%;
+        margin: 0 auto;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      .profile-info {
+        border: 1px solid red;
+        text-align: center;
+        margin-top: 1.5rem;
+
+        p {
+          padding: 0.3rem 0;
+        }
+      }
+
+      .worst-date {
+        //   border: 1px solid blue;
+        //   margin: 1rem 0;
+
+        h3 {
+          margin: 1rem 0;
+        }
+        p {
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+
+  .zomato {
+    text-align: center;
+    margin: 4rem 0;
+
+    .zomato-logo {
+      width: 35%;
+      height: 15vh;
+      margin: 2rem auto 0;
+      background: url("https://searchlogovector.com/wp-content/uploads/2019/05/zomato-logo-vector.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 5px;
+      // border: 1px solid red;
+
+      a {
+        width: 55%;
+        height: 100%;
+        color: transparent;
+      }
+    }
+  }
+}
