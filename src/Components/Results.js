@@ -19,3 +19,5 @@ function Results(props) {
 export default Results;
 
 // <Link to={`${url}/${restaurantID}`}>card</Link> {/*EXAMPLE LINK*/ }
+
+////
