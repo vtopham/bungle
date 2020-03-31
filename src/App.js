@@ -11,8 +11,6 @@ import Results from "./Components/Results";
 import Footer from "./Components/Footer";
 
 function App() {
-
-
   const [location, setLocation] = useState(281); //should be city-state with kabob casing
 
   const [restaurantID, setRestaurantID] = useState(16821237); //this will be the number that zomato uses
@@ -21,23 +19,35 @@ function App() {
 
   return (
     <>
+      <Header />
+      <Route exact path="/">
+        <Home
+          location={location}
+          setLocation={setLocation}
+          cuisineID={cuisineID}
+          setCuisineID={setCuisineID}
+          zSearchResults={zSearchResults}
+          setZSearchResults={setZSearchResults}
+        />
+      </Route>
 
-  <Header />
-    <Route exact path = "/">
-      <Home 
-        location = {location} 
-        setLocation = {setLocation} 
-        cuisineID = {cuisineID} 
-        setCuisineID = {setCuisineID} 
-        zSearchResults = {zSearchResults} 
-        setZSearchResults = {setZSearchResults}/>
-    </Route>
+      <Header />
+      <Route exact path="/">
+        <Home
+          location={location}
+          setLocation={setLocation}
+          cuisineID={cuisineID}
+          setCuisineID={setCuisineID}
+          zSearchResults={zSearchResults}
+          setZSearchResults={setZSearchResults}
+        />
+      </Route>
 
-    <Route path = "/about">
-      <About />
-    </Route>
+      <Route path="/about">
+        <About />
+      </Route>
 
-    <Route exact path="/search/:location">
+      <Route exact path="/search/:location">
         {" "}
         {/*matches up with state*/}
         <Results
@@ -45,6 +55,7 @@ function App() {
           setLocation={setLocation}
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
+
           zSearchResults = {zSearchResults}
           setZSearchResults = {setZSearchResults}
           cuisineID = {cuisineID}
@@ -57,6 +68,7 @@ function App() {
         <Restaurant restaurantID={restaurantID}/>
     </Route>
     <Footer />
+
 
 
     </>
