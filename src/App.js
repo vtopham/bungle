@@ -24,7 +24,13 @@ function App() {
 
   <Header />
     <Route exact path = "/">
-      <Home location = {location} setLocation = {setLocation} cuisineID = {cuisineID} setCuisineID = {setCuisineID} zSearchResults = {zSearchResults} setZSearchResults = {setZSearchResults}/>
+      <Home 
+        location = {location} 
+        setLocation = {setLocation} 
+        cuisineID = {cuisineID} 
+        setCuisineID = {setCuisineID} 
+        zSearchResults = {zSearchResults} 
+        setZSearchResults = {setZSearchResults}/>
     </Route>
 
     <Route path = "/about">

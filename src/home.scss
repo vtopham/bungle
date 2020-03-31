@@ -1,0 +1,32 @@
+//HOME PAGE :)
+
+$lg-lap-top: 1050px;
+$lap-top: 910px;
+$sm-lap-top: 800px;
+$phone: 500px;
+
+.home-container {
+  
+    display: flex;
+    flex-direction: column;
+    
+    width: 60%;
+    margin: 2% auto;
+  
+    height: 80vh;
+    
+    @media (max-width: $phone) {
+      width: 100%;
+    }
+  
+    h1 {
+      margin: 4% 0;
+      text-align: center;
+      font-size: 2.4rem;
+    }
+  
+    p {
+      margin: 1% 0;
+    }
+  
+  }
