@@ -35,7 +35,6 @@ function Restaurant (props) {
     const [reviews, setReviews] = useState([]);
     
 
-
     const header = { //header for the axios request
         method: 'GET',
         headers: {
@@ -46,20 +45,20 @@ function Restaurant (props) {
     }
 
     //set the restaurant data
-    // useEffect(() => {
-    //     axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
-    //     .then((response) => {
-    //         setRestData({
-    //             name: response.data.name,
-    //             aggregateRating: response.data.user_rating.aggregateRating,
-    //             ratingText: response.data.user_rating.rating_text,
-    //             address: response.data.location.address
-    //         })
-    //     })
-    // },[])
+    useEffect(() => {
+        axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
+        .then((response) => {
+            setRestData({
+                name: response.data.name,
+                aggregateRating: response.data.user_rating.aggregateRating,
+                ratingText: response.data.user_rating.rating_text,
+                address: response.data.location.address
+            })
+        })
+    },[])
 
     //get some reviews!
-    const maxCount = 50;
+    const maxCount = 100;
     var sentiment = new Sentiment();
 
     useEffect(() => {
@@ -101,7 +100,7 @@ function Restaurant (props) {
             </div>
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
                 {reviews.map((item) => {
-                    if (item.result.score < 100) {
+                    if (item.result.score < 1) {
                     return (
                         <Review thisReview = {item}/>
                     )}
