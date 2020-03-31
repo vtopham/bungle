@@ -6,6 +6,8 @@ import { useParams, useRouteMatch, Link } from "react-router-dom";
 function Results(props) {
   const { location, setLocation, restaurantID, setRestaurantID } = props;
 
+  console.log(location);
+
   const { path, url } = useRouteMatch();
 
   return (
