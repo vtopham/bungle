@@ -15,8 +15,8 @@ function App() {
 
   const [location, setLocation] = useState(281); //should be city-state with kabob casing
 
-  const [restaurantID, setRestaurantID] = useState("800"); //this will be the number that zomato uses
-  const [cuisineID, setCuisineID] = useState(201);
+  const [restaurantID, setRestaurantID] = useState(16834641); //this will be the number that zomato uses
+  const [cuisineID, setCuisineID] = useState(25);
   const [zSearchResults, setZSearchResults] = useState("");
 
   return (
@@ -46,12 +46,15 @@ function App() {
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
           zSearchResults = {zSearchResults}
+          setZSearchResults = {setZSearchResults}
           cuisineID = {cuisineID}
+          setCuisineID = {setCuisineID}
+
         />
       </Route>
 
     <Route path="/search/:location/:restaurantID">
-        <Restaurant />
+        <Restaurant restaurantID={restaurantID}/>
     </Route>
     <Footer />
 
