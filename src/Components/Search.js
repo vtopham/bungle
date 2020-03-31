@@ -96,7 +96,18 @@ function Search (props) {
     useEffect(() => {
         axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&cuisines=${cuisineID}&sort=rating&order=asc`, header)
         .then((response) => {
-            setZSearchResults(response.data.restaurants)
+            // setZSearchResults(response.data.restaurants)
+            
+            const arrRestaurants = response.data.restaurants.filter((state) => {
+                console.log(state.restaurant)
+                return state.restaurant.all_reviews_count > 1;
+            })
+            console.log(arrRestaurants);
+            setZSearchResults(arrRestaurants);
+                
+            
+
+
         })
     },[cuisineID])
 

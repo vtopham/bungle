@@ -16,7 +16,7 @@ function App() {
   const [location, setLocation] = useState(281); //should be city-state with kabob casing
 
   const [restaurantID, setRestaurantID] = useState(18296736); //this will be the number that zomato uses
-  const [cuisineID, setCuisineID] = useState(201);
+  const [cuisineID, setCuisineID] = useState(25);
   const [zSearchResults, setZSearchResults] = useState("");
 
   return (
