@@ -1,3 +1,8 @@
+$lg-lap-top: 1050px;
+$lap-top: 910px;
+$sm-lap-top: 800px;
+$phone: 500px;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -58,7 +63,17 @@ header {
     border: 1px solid blue;
     width: 420px;
     padding: 0.5rem;
-    margin: 0 1rem 2rem;
+    //  margin: 0 1rem 2rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: $lap-top) {
+      width: 400px;
+      color: red;
+    }
+
+    @media (max-width: $sm-lap-top) {
+      width: 450px;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -124,13 +139,23 @@ header {
 
 .about-container {
   border: 1px solid red;
-  width: 1400px;
+  max-width: 1400px;
   margin: 7rem auto;
 
   .profile-container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 1rem;
+
+    @media (max-width: $lg-lap-top) {
+      justify-content: space-around;
+    }
+
+    @media (max-width: $sm-lap-top) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     .profile {
       width: 45%;
@@ -138,11 +163,24 @@ header {
       border: 1px solid blue;
       text-transform: capitalize;
 
+      @media (max-width: $sm-lap-top) {
+        width: 70%;
+      }
+
+      @media (max-width: $phone) {
+        margin-bottom: 2rem;
+      }
+
       .bg-img {
-        //   padding: 9rem 0;
         width: 300px;
-        //   border: 1px solid red;
-        //   border-radius: 50%;
+
+        @media (max-width: $lg-lap-top) {
+          width: 250px;
+        }
+
+        @media (max-width: $phone) {
+          width: 200px;
+        }
         margin: 0 auto;
 
         img {
@@ -157,6 +195,10 @@ header {
         text-align: center;
         margin-top: 1.5rem;
 
+        @media (max-width: $phone) {
+          margin-top: 1rem;
+        }
+
         p {
           padding: 0.3rem 0;
         }
@@ -165,6 +207,10 @@ header {
       .worst-date {
         //   border: 1px solid blue;
         margin: 3rem 0 0;
+
+        @media (max-width: $phone) {
+          margin: 1.5rem 0 0;
+        }
 
         h3 {
           margin: 1rem 0;
@@ -179,6 +225,11 @@ header {
   .zomato {
     text-align: center;
     margin: 4rem 0;
+    border: 1px solid red;
+
+    @media (max-width: $phone) {
+      margin: 2rem 0;
+    }
 
     .zomato-logo {
       width: 35%;
@@ -190,6 +241,10 @@ header {
       background-repeat: no-repeat;
       border-radius: 5px;
       // border: 1px solid red;
+      @media (max-width: $phone) {
+        width: 90%;
+        height: 14vh;
+      }
 
       a {
         width: 55%;
@@ -208,10 +263,14 @@ footer {
   border: 1px solid red;
 
   .footer-container {
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
     border: 1px solid red;
     padding: 2rem 1rem;
+
+    @media (max-width: $phone) {
+      padding: 1rem;
+    }
 
     p {
       margin-top: 2rem;
@@ -226,6 +285,7 @@ footer {
     nav {
       display: flex;
       // flex-direction: column;
+      // border: 1px solid red;
 
       a {
         text-transform: uppercase;

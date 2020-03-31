@@ -32,6 +32,75 @@ function Results(props) {
           <Link to={`${url}/${restaurantID}`}>see more</Link>
         </div>
       </div>
+
+      <div className="single-card">
+        <h3>restaurant's name</h3>
+        <div className="rating">
+          <span>Restaurant Rating</span>
+          <span>
+            <GoStar />
+            <GoStar />
+            <GoStar />
+          </span>
+        </div>
+        <div className="reviews-container">
+          <p className="review-title">reviews</p>
+          <div className="review">
+            <p>"review one"</p>
+            <p>"review two"</p>
+          </div>
+        </div>
+
+        <div className="more">
+          <Link to={`${url}/${restaurantID}`}>see more</Link>
+        </div>
+      </div>
+
+      <div className="single-card">
+        <h3>restaurant's name</h3>
+        <div className="rating">
+          <span>Restaurant Rating</span>
+          <span>
+            <GoStar />
+            <GoStar />
+            <GoStar />
+          </span>
+        </div>
+        <div className="reviews-container">
+          <p className="review-title">reviews</p>
+          <div className="review">
+            <p>"review one"</p>
+            <p>"review two"</p>
+          </div>
+        </div>
+
+        <div className="more">
+          <Link to={`${url}/${restaurantID}`}>see more</Link>
+        </div>
+      </div>
+
+      <div className="single-card">
+        <h3>restaurant's name</h3>
+        <div className="rating">
+          <span>Restaurant Rating</span>
+          <span>
+            <GoStar />
+            <GoStar />
+            <GoStar />
+          </span>
+        </div>
+        <div className="reviews-container">
+          <p className="review-title">reviews</p>
+          <div className="review">
+            <p>"review one"</p>
+            <p>"review two"</p>
+          </div>
+        </div>
+
+        <div className="more">
+          <Link to={`${url}/${restaurantID}`}>see more</Link>
+        </div>
+      </div>
     </div>
   );
 }
