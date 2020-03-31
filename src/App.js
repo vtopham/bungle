@@ -46,10 +46,11 @@ function App() {
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
           zSearchResults = {zSearchResults}
+          cuisineID = {cuisineID}
         />
       </Route>
 
-    <Route path="/seacrch/:location/:restaurantID">
+    <Route path="/search/:location/:restaurantID">
         <Restaurant />
     </Route>
     <Footer />

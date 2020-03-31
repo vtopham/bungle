@@ -98,7 +98,7 @@ function Results(props) {
         </div>
 
         <div className="more">
-          <Link to={`${url}/${restaurantID}`}>see more</Link>
+          <Link to={`search/${url}/${restaurantID}`}>see more</Link>
         </div>
       </div>
     </div>
