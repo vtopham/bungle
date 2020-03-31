@@ -1,11 +1,12 @@
 //Only Vic changes this code
 
-import React from "react"
+import React, {useEffect, useState} from "react"
 import "../restaurant.scss"
 import { GoStar } from "react-icons/go";
 import {Link} from "react-router-dom"
+import axios from "axios"
 
-function Review (props) {
+function Review (props) { //review component
     const {numOfStars, reviewer, reviewText} = props
     const stars = [];
 
@@ -23,22 +24,54 @@ function Review (props) {
         </div>
     )
 }
+
+
 function Restaurant (props) {
+    const {restaurantID} = props
+    const [restData, setRestData] = useState({
+        name: "",
+        aggregateRating: "",
+        ratingText: "",
+    });
+    
+
+
+    const header = { //header for the axios request
+        method: 'GET',
+        headers: {
+            'user-key': '392a6e06ccc0d5d88a95d732a6bfc55d',
+            'Content-type': 'application.json',
+        },
+        credentials: 'same-origin'
+    }
+
+    useEffect(() => {
+        axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
+        .then((response) => {
+            console.log(response.data)
+            setRestData({
+                name: response.data.name,
+                aggregateRating: response.data.user_rating.aggregateRating,
+                ratingText: response.data.user_rating.rating_text,
+                address: response.data.location.address
+            })
+        })
+    },[])
+
 
     return(
         <>
         <div className = "restaurant-container">
-            <h1>Restaurant Name</h1>
+            <h1>{restData.name}</h1>
             <div>
-                <span className = "rating">
+                {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : <span className = "rating">
+                    <GoStar />  {/*NEED TO HAVE THIS GENERATE THE RIGHT NUMBER OF STARS*/}
                     <GoStar />
-                    <GoStar />
-                </span>
+                </span>}
             </div>
             <div className = "restaurant-address">
                 <div>
-                    <p>111 market street</p>
-                    <p>San Francisco, CA</p>
+                    <p>{restData.address}</p> {/*NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
                 </div>
                 <button>Google Maps</button>
             </div>

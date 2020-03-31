@@ -85,7 +85,7 @@ function Search (props) {
     //When the city is updated, do a get request and get a list of all cuisines
 
     useEffect(() => {
-        axios.get("https://developers.zomato.com/api/v2.1/cuisines?city_id=281", header)
+        axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${location}`, header)
         .then((response) => {
             setCuisines(response.data.cuisines)
         })
