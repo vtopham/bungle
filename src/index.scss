@@ -14,11 +14,28 @@ a {
   display: inline-block;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Lato|Merriweather|Playfair+Display&display=swap');
+
 span,
 p,
-a {
+a, label, button {
   font-size: 1.1rem;
+  color: #36383b;
+  font-family:'Lato', sans-serif;
+  line-height: 1.5;
 }
+
+
+
+
+
+h1 {
+  font-family: 'Merriweather', serif;
+  color: #36383b;
+}
+
+
+
 
 header {
   border: 1px solid red;
@@ -294,3 +311,5 @@ footer {
     }
   }
 }
+
+

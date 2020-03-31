@@ -1,6 +1,7 @@
 //Only Vic changes this code
 
 import React from "react"
+import "../restaurant.scss"
 
 function Restaurant (props) {
 
