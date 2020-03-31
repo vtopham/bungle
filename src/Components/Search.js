@@ -99,7 +99,7 @@ function Search (props) {
             // setZSearchResults(response.data.restaurants)
             
             const arrRestaurants = response.data.restaurants.filter((state) => {
-                console.log(state.restaurant)
+                
                 return state.restaurant.all_reviews_count > 1;
             })
             console.log(arrRestaurants);
