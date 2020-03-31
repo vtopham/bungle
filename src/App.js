@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Restaurant from "./Components/Restaurant";
 import Results from "./Components/Results";
+import Footer from "./Components/Footer";
 
 function App() {
   const [location, setLocation] = useState("Los-Vegas-NV"); //should be city-state with kabob casing
@@ -39,6 +40,7 @@ function App() {
       <Route path="/seacrch/:location/:restaurantID">
         <Restaurant />
       </Route>
+      <Footer />
     </>
   );
 }
