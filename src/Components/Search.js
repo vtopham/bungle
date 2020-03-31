@@ -103,7 +103,7 @@ function Search (props) {
     const array = [1,2,3]
     return(
         <>
-        <SearchForm>
+        <SearchForm id = "search">
             <SearchDiv className = "input"> 
                 <label htmlFor = "city">City</label>
                 <CustomSelect>
