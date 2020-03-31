@@ -46,7 +46,10 @@ function App() {
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
           zSearchResults = {zSearchResults}
+          setZSearchResults = {setZSearchResults}
           cuisineID = {cuisineID}
+          setCuisineID = {setCuisineID}
+
         />
       </Route>
 

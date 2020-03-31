@@ -2,12 +2,16 @@
 
 import React from "react"
 import "../restaurant.scss"
+import { GoStar } from "react-icons/go";
+
 
 function Restaurant (props) {
 
     return(
         <>
-        <p>This is the restaurant page</p>
+        <div className = "restaurant-container">
+            <h1>Restaurant Name</h1>
+        </div>
         </>
     )
 }
