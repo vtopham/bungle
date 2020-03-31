@@ -27,7 +27,9 @@ button {
   line-height: 1.5;
 }
 
-h1, h2 {
+h1,
+h2,
+h3 {
   font-family: "Merriweather", serif;
   color: #36383b;
 }
@@ -39,7 +41,7 @@ header {
   .header-container {
     max-width: 1400px;
     margin: 0 auto;
-    border: 1px solid blue;
+    //  border: 1px solid blue;
     display: flex;
     justify-content: space-between;
     padding: 1rem 1rem 0;
@@ -64,7 +66,7 @@ header {
 ////// RESULTS CONTIANER STARTS HERE
 
 .result-container {
-  border: 1px solid red;
+  //   border: 1px solid red;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -72,15 +74,13 @@ header {
   margin: 7rem auto;
 
   .single-card {
-    border: 1px solid blue;
+    border: 1px solid rgb(226, 225, 225);
     width: 420px;
-    padding: 0.5rem;
-    //  margin: 0 1rem 2rem;
+    padding: 0.5rem 0;
     margin-bottom: 2rem;
 
     @media (max-width: $lap-top) {
       width: 400px;
-      color: red;
     }
 
     @media (max-width: $sm-lap-top) {
@@ -94,15 +94,16 @@ header {
     h3 {
       text-align: center;
       padding: 0.5rem 0 1rem;
-      border: 1px solid red;
-      margin-bottom: 1rem;
+      border-bottom: 1px solid rgb(230, 227, 227);
+      // border: 1px solid red;
+      // margin-bottom: 1rem;
       // background: ;
     }
     .rating {
-      border: 1px solid red;
+      // border: 1px solid red;
       display: flex;
-      justify-content: center;
-      padding: 0.5rem 0;
+      justify-content: space-around;
+      padding: 0.5rem 2.5rem;
 
       span {
         &:last-child {
@@ -113,7 +114,7 @@ header {
     }
 
     .reviews-container {
-      border: 1px solid red;
+      // border: 1px solid red;
       margin: 1rem 0;
 
       .review-title {
@@ -139,11 +140,11 @@ header {
       // border: 1px solid red;
       display: flex;
       justify-content: center;
-      // margin-bottom: 1;
+      margin: 1rem 0;
 
       a {
         text-transform: uppercase;
-        border: 1px solid red;
+        border: 1px solid rgb(194, 193, 193);
         padding: 0.4rem 2rem;
         border-radius: 4px;
       }
@@ -156,7 +157,7 @@ header {
 //// ABOUT PAGE STARTS HERE
 
 .about-container {
-  border: 1px solid red;
+  //   border: 1px solid red;
   max-width: 1400px;
   margin: 7rem auto;
 
@@ -178,7 +179,8 @@ header {
     .profile {
       width: 45%;
       margin-bottom: 5rem;
-      border: 1px solid blue;
+      padding: 1rem;
+      border: 1px solid rgb(203, 203, 206);
       text-transform: capitalize;
 
       @media (max-width: $sm-lap-top) {
@@ -243,7 +245,7 @@ header {
   .zomato {
     text-align: center;
     margin: 4rem 0;
-    border: 1px solid red;
+    //  border: 1px solid red;
 
     @media (max-width: $phone) {
       margin: 2rem 0;
@@ -278,12 +280,12 @@ header {
 //// FOOTER STARTS HERE
 
 footer {
-  border: 1px solid red;
+  border: 1px solid rgb(216, 215, 215);
 
   .footer-container {
     max-width: 1400px;
     margin: 0 auto;
-    border: 1px solid red;
+    //  border: 1px solid red;
     padding: 2rem 1rem;
 
     @media (max-width: $phone) {

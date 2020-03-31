@@ -7,19 +7,18 @@ const SingleCard = ({ restaurant, restId }) => {
 
   const { name, user_rating, featured_image } = restaurant;
 
+  //   const rounded
+
   const img = featured_image
     ? featured_image
     : "https://images.unsplash.com/photo-1484230836131-717d7ce3298d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80";
-
-  const displayRating = Number(user_rating.aggregate_rating);
 
   return (
     <div className="single-card">
       <h3>{name}</h3>
       <div className="rating">
-        <span>
-          Rating{""} {user_rating.rating_text}, {user_rating.aggregate_rating}
-        </span>
+        <span>{`Rating:${""} ${user_rating.rating_text}`}</span>
+        <span>{user_rating.aggregate_rating}</span>
         <span>
           <GoStar />
           <GoStar />
