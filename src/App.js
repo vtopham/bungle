@@ -31,7 +31,7 @@ function App() {
         />
       </Route>
 
-      <Header />
+      {/* <Header />
       <Route exact path="/">
         <Home
           location={location}
@@ -41,7 +41,7 @@ function App() {
           zSearchResults={zSearchResults}
           setZSearchResults={setZSearchResults}
         />
-      </Route>
+      </Route> */}
 
       <Route path="/about">
         <About />
