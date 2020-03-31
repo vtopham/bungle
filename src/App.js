@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Restaurant from "./Components/Restaurant";
 import Results from "./Components/Results";
+import Footer from "./Components/Footer";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
 
+  <Header />
     <Route exact path = "/">
       <Home location = {location} setLocation = {setLocation} cuisineID = {cuisineID} setCuisineID = {setCuisineID} zSearchResults = {zSearchResults} setZSearchResults = {setZSearchResults}/>
     </Route>
@@ -29,13 +31,23 @@ function App() {
       <About />
     </Route>
 
-  <Route exact path = "/:location"> {/*matches up with state*/}
-      <Results location = {location} setLocation = {setLocation} restaurantID = {restaurantID} setRestaurantID = {setRestaurantID} zSearchResults = {zSearchResults}/>
-    </Route>
+    <Route exact path="/search/:location">
+        {" "}
+        {/*matches up with state*/}
+        <Results
+          location={location}
+          setLocation={setLocation}
+          restaurantID={restaurantID}
+          setRestaurantID={setRestaurantID}
+          zSearchResults = {zSearchResults}
+        />
+      </Route>
 
-    <Route path = "/:location/:restaurantID"> 
-      <Restaurant />
+    <Route path="/seacrch/:location/:restaurantID">
+        <Restaurant />
     </Route>
+    <Footer />
+
 
     </>
   );
