@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from "react"
 import "../restaurant.scss"
 import { GoStar } from "react-icons/go";
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import axios from "axios"
 import Sentiment from "sentiment"
 
@@ -23,7 +23,9 @@ function Review(props) {
 
 
 function Restaurant (props) {
-    const {restaurantID} = props
+    // const {restaurantID} = props
+    const params = useParams()
+    const restaurantID = params.restaurantID
 
     //set some state for the stuff i'm grabbing
     const [restData, setRestData] = useState({
@@ -34,6 +36,7 @@ function Restaurant (props) {
 
     const [reviews, setReviews] = useState([]);
     
+
 
     const header = { //header for the axios request
         method: 'GET',
@@ -58,7 +61,7 @@ function Restaurant (props) {
     },[])
 
     //get some reviews!
-    const maxCount = 100;
+    const maxCount = 50;
     var sentiment = new Sentiment();
 
     useEffect(() => {
@@ -88,17 +91,18 @@ function Restaurant (props) {
             <h1>{restData.name}</h1>
             <div>
                 {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : <span className = "rating">
-                    <GoStar />  {/*NEED TO HAVE THIS GENERATE THE RIGHT NUMBER OF STARS*/}
+                    <GoStar />  {/*TODO NEED TO HAVE THIS GENERATE THE RIGHT NUMBER OF STARS*/}
                     <GoStar />
                 </span>}
             </div>
             <div className = "restaurant-address">
                 <div>
-                    <p>{restData.address}</p> {/*NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
+                    <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
                 </div>
-                <button>Google Maps</button>
+                <button>Google Maps</button> {/*TODO this needs to be functional lol*/ }
             </div>
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
+                <h2>Reviews</h2>
                 {reviews.map((item) => {
                     if (item.result.score < 1) {
                     return (

@@ -31,7 +31,7 @@ function App() {
         />
       </Route>
 
-      <Header />
+      {/* <Header />
       <Route exact path="/">
         <Home
           location={location}
@@ -41,7 +41,7 @@ function App() {
           zSearchResults={zSearchResults}
           setZSearchResults={setZSearchResults}
         />
-      </Route>
+      </Route> */}
 
       <Route path="/about">
         <About />
@@ -55,22 +55,17 @@ function App() {
           setLocation={setLocation}
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
-
-          zSearchResults = {zSearchResults}
-          setZSearchResults = {setZSearchResults}
-          cuisineID = {cuisineID}
-          setCuisineID = {setCuisineID}
-
+          zSearchResults={zSearchResults}
+          setZSearchResults={setZSearchResults}
+          cuisineID={cuisineID}
+          setCuisineID={setCuisineID}
         />
       </Route>
 
-    <Route path="/search/:location/:restaurantID">
-        <Restaurant restaurantID={restaurantID}/>
-    </Route>
-    <Footer />
-
-
-
+      <Route path="/search/:location/:restaurantID">
+        <Restaurant restaurantID={restaurantID} />
+      </Route>
+      <Footer />
     </>
   );
 }

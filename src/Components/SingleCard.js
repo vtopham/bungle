@@ -17,9 +17,8 @@ const SingleCard = ({ restaurant, restId }) => {
     <div className="single-card">
       <h3>{name}</h3>
       <div className="rating">
-        <span>
-          Rating{""} {user_rating.rating_text}, {user_rating.aggregate_rating}
-        </span>
+        <span>{`Rating:${""} ${user_rating.rating_text}`}</span>
+        <span>{user_rating.aggregate_rating}</span>
         <span>
           <GoStar />
           <GoStar />
