@@ -5,36 +5,35 @@ import "../restaurant.scss"
 import { GoStar } from "react-icons/go";
 import {Link} from "react-router-dom"
 import axios from "axios"
+import Sentiment from "sentiment"
 
-function Review (props) { //review component
-    const {numOfStars, reviewer, reviewText} = props
-    const stars = [];
 
-    for (let i = 0; i < numOfStars; i++) {
-        stars.push(1);
-    }
-   
+
+function Review(props) {
+    const {thisReview} = props
+
     return(
         <div className = "full-review">
-        <p className = "quote">{reviewText}</p>
-        <span className = "rating">
-            {stars.map( _ => <GoStar/>)}
-            <span className = "reviewer">-{reviewer}</span>
-        </span>
+           <p className = "quote">{thisReview.review}</p> 
+           <p className = "reviewer">-{thisReview.user}</p>
         </div>
+
     )
 }
 
 
 function Restaurant (props) {
     const {restaurantID} = props
+
+    //set some state for the stuff i'm grabbing
     const [restData, setRestData] = useState({
         name: "",
         aggregateRating: "",
         ratingText: "",
     });
-    
 
+    const [reviews, setReviews] = useState([]);
+    
 
     const header = { //header for the axios request
         method: 'GET',
@@ -45,10 +44,10 @@ function Restaurant (props) {
         credentials: 'same-origin'
     }
 
+    //set the restaurant data
     useEffect(() => {
         axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
         .then((response) => {
-            console.log(response.data)
             setRestData({
                 name: response.data.name,
                 aggregateRating: response.data.user_rating.aggregateRating,
@@ -57,6 +56,30 @@ function Restaurant (props) {
             })
         })
     },[])
+
+    //get some reviews!
+    const maxCount = 100;
+    var sentiment = new Sentiment();
+
+    useEffect(() => {
+        axios.get(`https://developers.zomato.com/api/v2.1/reviews?res_id=${restaurantID}&count=${maxCount}`, header)
+        .then((response) => {
+            const allReviews = response.data.user_reviews
+            
+            setReviews(
+               allReviews.map((item) => {
+                   console.log(item.review)
+                   return {
+                        review: item.review.review_text,
+                        result: sentiment.analyze(item.review.review_text),
+                        user: item.review.user.name
+                   }
+               }) 
+            ) //end setReviews
+
+        })
+    },[])
+
 
 
     return(
@@ -75,10 +98,15 @@ function Restaurant (props) {
                 </div>
                 <button>Google Maps</button>
             </div>
-            <div className = "restaurant-reviews">
-                <Review numOfStars = {2} reviewer = {`Victoria`} reviewText = {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque nibh et nunc finibus pellentesque. Sed tempus lectus vitae porttitor commodo. Nam pulvinar ante in volutpat eleifend. Mauris vitae ligula dolor. Nullam feugiat cursus ligula, nec consequat massa tempor vitae.`}/>
-                <Review numOfStars = {3} reviewer = {`Victoria`} reviewText = {`Aenean id accumsan ante, nec tempus lorem. Maecenas vitae nibh at metus euismod varius sagittis non orci. Quisque facilisis nec lorem in vulputate. Sed viverra orci sed velit mollis vestibulum. In mollis mattis nunc, non convallis eros venenatis quis. Quisque auctor erat nec tincidunt semper. Etiam sed sagittis sem, id convallis quam. Nam feugiat, augue id sagittis accumsan, est justo lobortis augue, sit amet pulvinar purus tellus quis turpis. `}/>
-                <Review numOfStars = {2} reviewer = {`Victoria`} reviewText = {`Donec sed dictum justo. Vivamus feugiat faucibus ipsum non fermentum. Cras eu efficitur enim, a elementum nisi. Sed interdum tellus sed ex pretium dictum. Integer metus mauris, viverra vel lectus in, hendrerit aliquam arcu. Pellentesque sodales nulla eu urna vestibulum, ac mattis ligula tempus.`}/>
+            <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
+                {reviews.map((item) => {
+                    if (item.result.score < 1) {
+                    return (
+                        <Review thisReview = {item}/>
+                    )}
+                })}
+
+
             </div>
             <div className = "go-back-home">
                 <Link to = "/#search">
