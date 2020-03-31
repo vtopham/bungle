@@ -1,6 +1,7 @@
 //Only Vic changes this code
 
 import React, {useEffect, useState} from "react"
+import {Link} from "react-router-dom"
 import styled from "styled-components"
 import axios from "axios"
 
@@ -10,22 +11,44 @@ const SearchForm = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    padding: 2% 0;
+
+    .input {
+        width: 35%;
+    }
+
 
 `
 const SearchDiv = styled.div`
     display: flex;
     flex-direction: column;
-    width: 30%;
+
+    label {
+        padding-bottom: 2%;
+    }
 
 `
 const LetsGo = styled.button`
-    color: gray;
+    
     background: gold;
     border-radius: 10px;
-    height: 30px;
-    width: 100px;
+    height: 2.4rem;
+    width: 120px;
     border: 1px solid gold;
-    font-size: 16px;
+    font-size: 1.2rem;
+`
+
+
+const CustomSelect = styled.div`
+    width: 100%;
+
+    select {
+        width: 100%;
+        height: 2.4rem;
+        font-size: 1rem;
+        background: white;
+        border: 1px solid #36383b;
+    }
 `
 
 function Search (props) {
@@ -80,31 +103,32 @@ function Search (props) {
     const array = [1,2,3]
     return(
         <>
-        <p>This is the search component</p>
         <SearchForm>
-            <SearchDiv> 
+            <SearchDiv className = "input"> 
                 <label htmlFor = "city">City</label>
-                <select  onChange = {updateCity} id = "city" name = "city" placeholder = "Las Vegas, NV">
-                    {Object.keys(cities).map((key) => { {/*add all the cities from our hard coded object*/}
-                        return (<option value = {key}>{cities[key]}</option>
-                    )})}
-                </select>
+                <CustomSelect>
+                    <select  onChange = {updateCity} id = "city" name = "city" placeholder = "Las Vegas, NV">
+                        {Object.keys(cities).map((key) => { {/*add all the cities from our hard coded object*/}
+                            return (<option value = {key}>{cities[key]}</option>
+                        )})}
+                    </select>
+                </CustomSelect>
             </SearchDiv>
-            <SearchDiv>
+            <SearchDiv className = "input">
                 <label htmlFor = "cuisine">Cuisine</label>
-                <select onChange = {updateCuisine} id = "cuisine" name = "cuisine" placeholder = "Italian">
-                    {/* {Object.keys(cuisines).map((key) => {
-                        return (<option value = {key}>{cuisines[key]}</option>)
-                    })} */}
-                    {cuisines.map((item) => {
-                        return (<option value = {item.cuisine.cuisine_id}>{item.cuisine.cuisine_name}</option>)
-                        
-                    })}
-
-                </select>
+                <CustomSelect>
+                    <select onChange = {updateCuisine} id = "cuisine" name = "cuisine" placeholder = "Italian">
+                        {cuisines.map((item) => {
+                            return (<option value = {item.cuisine.cuisine_id}>{item.cuisine.cuisine_name}</option>)
+                            
+                        })}
+                    </select>
+                </CustomSelect>
             </SearchDiv>
             <SearchDiv>
+                <Link to = {`search/${location}`}>
                     <LetsGo>Let's Go!</LetsGo>
+                </Link> 
             </SearchDiv>
         </SearchForm>
         </>
