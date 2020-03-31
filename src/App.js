@@ -13,8 +13,8 @@ import Footer from "./Components/Footer";
 function App() {
   const [location, setLocation] = useState(281); //should be city-state with kabob casing
 
-  const [restaurantID, setRestaurantID] = useState("800"); //this will be the number that zomato uses
-  const [cuisineID, setCuisineID] = useState(201);
+  const [restaurantID, setRestaurantID] = useState(16821237); //this will be the number that zomato uses
+  const [cuisineID, setCuisineID] = useState(25);
   const [zSearchResults, setZSearchResults] = useState("");
 
   return (
@@ -55,15 +55,22 @@ function App() {
           setLocation={setLocation}
           restaurantID={restaurantID}
           setRestaurantID={setRestaurantID}
-          zSearchResults={zSearchResults}
-          cuisineID={cuisineID}
+
+          zSearchResults = {zSearchResults}
+          setZSearchResults = {setZSearchResults}
+          cuisineID = {cuisineID}
+          setCuisineID = {setCuisineID}
+
         />
       </Route>
 
-      <Route path="/search/:location/:restaurantID">
-        <Restaurant />
-      </Route>
-      <Footer />
+    <Route path="/search/:location/:restaurantID">
+        <Restaurant restaurantID={restaurantID}/>
+    </Route>
+    <Footer />
+
+
+
     </>
   );
 }

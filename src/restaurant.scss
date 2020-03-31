@@ -1,0 +1,94 @@
+$lg-lap-top: 1050px;
+$lap-top: 910px;
+$sm-lap-top: 800px;
+$phone: 500px;
+
+.rating {
+    color: gold;
+}
+
+.restaurant-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 60%;
+    margin: 2% auto;
+
+    div {
+        margin: 2% 0;
+    }
+
+    h1 {
+        margin: 2% 0;
+        font-size: 2.4rem;
+      }
+      
+    
+    .go-back-home {
+
+        display: flex;
+        justify-content: center;
+
+        button {
+            background: gold;
+            border-radius: 10px;
+            height: 2.4rem;
+            width: 170px;
+            border: 1px solid gold;
+            font-size: 1.2rem;
+        }
+       
+    }
+
+    .restaurant-address {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        button {
+            margin-left: 4%;
+            height: 50px;
+            width: 120px;
+
+            color: white;
+            background: dodgerblue;
+            border-radius: 10px;
+
+            font-size: 1rem;
+            
+
+        }
+    }
+
+    .restaurant-reviews {
+        align-self: center;
+        width: 80%;
+        
+
+        * {
+            margin: 2% 0;
+        }
+        .full-review {
+            border-bottom: 1px solid #36383b;
+            padding: 2%;
+            
+        }
+        .full-review:last-child {
+            border-bottom: none;
+        }
+        .rating {
+            margin-left: 10%;
+            display: flex;
+            align-items: center;
+            
+        }
+        .reviewer {
+            margin-left: 1rem;
+            font-style: italic;
+        }
+    }
+
+  
+
+
+}
