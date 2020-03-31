@@ -5,13 +5,21 @@ import { useRouteMatch, Link } from "react-router-dom";
 const SingleCard = ({ restaurant, restId }) => {
   const { path, url } = useRouteMatch();
 
-  console.log(restaurant);
+  const { name, user_rating, featured_image } = restaurant;
+
+  const img = featured_image
+    ? featured_image
+    : "https://images.unsplash.com/photo-1484230836131-717d7ce3298d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80";
+
+  const displayRating = Number(user_rating.aggregate_rating);
 
   return (
     <div className="single-card">
-      <h3>restaurant's name</h3>
+      <h3>{name}</h3>
       <div className="rating">
-        <span>Restaurant Rating</span>
+        <span>
+          Rating{""} {user_rating.rating_text}, {user_rating.aggregate_rating}
+        </span>
         <span>
           <GoStar />
           <GoStar />
@@ -19,10 +27,8 @@ const SingleCard = ({ restaurant, restId }) => {
         </span>
       </div>
       <div className="reviews-container">
-        <p className="review-title">reviews</p>
         <div className="review">
-          <p>"review one"</p>
-          <p>"review two"</p>
+          <img src={img} alt={name} />
         </div>
       </div>
 
