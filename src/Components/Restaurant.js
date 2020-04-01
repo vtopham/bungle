@@ -51,11 +51,15 @@ function Restaurant (props) {
     useEffect(() => {
         axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
         .then((response) => {
+            // console.log(response.data.featured_image)
             setRestData({
                 name: response.data.name,
                 aggregateRating: response.data.user_rating.aggregateRating,
                 ratingText: response.data.user_rating.rating_text,
-                address: response.data.location.address
+                address: response.data.location.address,
+                addressSearch: "https://www.google.com/maps/place/" + response.data.location.address.replace(/ /g, "+"),
+                rating: response.data.user_rating.aggregate_rating,
+                photo: response.data.featured_image
             })
         })
     },[])
@@ -71,7 +75,6 @@ function Restaurant (props) {
             
             setReviews(
                allReviews.map((item) => {
-                   console.log(item.review)
                    return {
                         review: item.review.review_text,
                         result: sentiment.analyze(item.review.review_text),
@@ -83,28 +86,37 @@ function Restaurant (props) {
         })
     },[])
 
-
+    const arrRating = []
+    for (let i = 0; i < restData.rating; i++) {
+        arrRating.push(1);
+    }
 
     return(
         <>
         <div className = "restaurant-container">
             <h1>{restData.name}</h1>
             <div>
-                {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : <span className = "rating">
-                    <GoStar />  {/*TODO NEED TO HAVE THIS GENERATE THE RIGHT NUMBER OF STARS*/}
-                    <GoStar />
-                </span>}
+                {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : null}
+                <span className = "rating">
+                    {arrRating.map(_ => <GoStar/>)} {/*This rounds up*/}
+                </span>
             </div>
-            <div className = "restaurant-address">
-                <div>
-                    <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
+
+            {/* <div className = "address-photo-container"> */}
+                <div className = "restaurant-address">
+                    <div>
+                        <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
+                    </div>
+                    <a target = "_blank" href = {restData.addressSearch}><button> Google Maps</button></a> {/*TODO this needs to be functional lol*/ }
                 </div>
-                <button>Google Maps</button> {/*TODO this needs to be functional lol*/ }
-            </div>
+                <div className = "rest-photo">
+                    <img src = {`${restData.photo}`}/>
+                </div>
+            {/* </div> */}
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
                 <h2>Reviews</h2>
                 {reviews.map((item) => {
-                    if (item.result.score < 1) {
+                    if (item.result.score < 2) {
                     return (
                         <Review thisReview = {item}/>
                     )}

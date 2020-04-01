@@ -9,7 +9,7 @@ import axios from "axios"
 
 const SearchForm = styled.form`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
     padding: 2% 0;
 
@@ -26,6 +26,8 @@ const SearchDiv = styled.div`
     label {
         padding-bottom: 2%;
     }
+
+    margin-right: 4%;
 
 `
 const LetsGo = styled.button`
@@ -57,8 +59,28 @@ function Search (props) {
 
     //Set up the drop-downs
     const cities = {
+        289: "Boston, MA",
+        303: "Charlotte, NC",
+        292: "Chicago, IL",
+        1021: "Columbus, OH",
+        305: "Denver, CO",
+        285: "Detroit, MI",
+        277: "Houston, TX",
+        574: "Jacksonville, FL",
+        282: "Las Vegas, NV",
         281: "Los Angeles, CA",
-        282: "Las Vegas, NV"
+        745: "Louisville, KY",
+        1138: "Nashville, TN",
+        280: "New York City, NY",
+        287: "Philadelphia, PA",
+        301: "Phoenix, AZ",
+        286: "Portland, OR",
+        304: "San Antonio, TX",
+        302: "San Diego, CA",
+        306: "San Francisco, CA",
+        279: "Seattle, WA",
+        283: "Washington DC",
+
     }
 
     const [cuisines, setCuisines] = useState([])
@@ -75,41 +97,35 @@ function Search (props) {
     //update the location when the city is updated & cuisine
 
     const updateCity = (event) => {
-      setLocation(event.target.value);  
+      setLocation(event.target.value); 
+      
     }
 
     const updateCuisine = (event) => {
         setCuisineID(event.target.value)
     }
 
-    //When the city is updated, do a get request and get a list of all cuisines
+    //When the city is updated, do a get request and get a list of all cuisines - CUISINES REMOVED
 
-    useEffect(() => {
-        axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${location}`, header)
-        .then((response) => {
-            setCuisines(response.data.cuisines)
-        })
-    },[location])
+    // useEffect(() => {
+    //     axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${location}`, header)
+    //     .then((response) => {
+    //         setCuisines(response.data.cuisines)
+    //     })
+    // },[location])
 
     //When the cuisine is chosen, query for the search **NOT EFFICIENT, DON'T CARE FOR NOW, WE GET 1000 CALLS A DAY**
 
     useEffect(() => {
-        axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&cuisines=${cuisineID}&sort=rating&order=asc`, header)
+        axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&sort=rating&order=asc`, header)
         .then((response) => {
-            // setZSearchResults(response.data.restaurants)
-            
             const arrRestaurants = response.data.restaurants.filter((state) => {
-                
-                return state.restaurant.all_reviews_count > 1;
+                return state.restaurant.all_reviews_count > 5;
             })
-            console.log(arrRestaurants);
             setZSearchResults(arrRestaurants);
                 
-            
-
-
         })
-    },[cuisineID])
+    },[location])
 
     const array = [1,2,3]
     return(
@@ -125,7 +141,7 @@ function Search (props) {
                     </select>
                 </CustomSelect>
             </SearchDiv>
-            <SearchDiv className = "input">
+            {/* <SearchDiv className = "input">
                 <label htmlFor = "cuisine">Cuisine</label>
                 <CustomSelect>
                     <select onChange = {updateCuisine} id = "cuisine" name = "cuisine" placeholder = "Italian">
@@ -135,7 +151,7 @@ function Search (props) {
                         })}
                     </select>
                 </CustomSelect>
-            </SearchDiv>
+            </SearchDiv> */}
             <SearchDiv>
                 <Link to = {`search/${location}`}>
                     <LetsGo>Let's Go!</LetsGo>
