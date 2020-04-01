@@ -116,7 +116,7 @@ function Restaurant (props) {
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
                 <h2>Reviews</h2>
                 {reviews.map((item) => {
-                    if (item.result.score < 1) {
+                    if (item.result.score < 2) {
                     return (
                         <Review thisReview = {item}/>
                     )}
