@@ -87,7 +87,7 @@ function Search(props) {
     //header for the axios request
     method: "GET",
     headers: {
-      "user-key": "392a6e06ccc0d5d88a95d732a6bfc55d",
+      "user-key": process.env.REACT_APP_API_KEY,
       "Content-type": "application.json"
     },
     credentials: "same-origin"
@@ -145,7 +145,11 @@ function Search(props) {
                 {
                   /*add all the cities from our hard coded object*/
                 }
-                return <option value={key}>{cities[key]}</option>;
+                return (
+                  <option key={key} value={key}>
+                    {cities[key]}
+                  </option>
+                );
               })}
             </select>
           </CustomSelect>
