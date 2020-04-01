@@ -10,12 +10,12 @@ const Profile = ({ image, name, github }) => {
       </div>
       <div className="profile-info">
         <p>{name}</p>
-        <p>
+        <p className="github">
           <a href={github} target="_blank" rel="noopener noreferrer">
             github
           </a>
         </p>
-        <p>
+        <p className="website">
           <a href="google.com" target="_blank" rel="noopener noreferrer">
             website
           </a>

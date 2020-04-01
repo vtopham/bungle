@@ -9,11 +9,8 @@ function Header() {
     <header>
       <div className="header-container">
         <h1>
-          <NavLink to="/">Logo</NavLink>
+          <NavLink to="/">Bungle</NavLink>
         </h1>
-        <nav>
-          <NavLink to="/about">About</NavLink>
-        </nav>
       </div>
     </header>
   );

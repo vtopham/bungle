@@ -1,5 +1,6 @@
 import React from "react";
 import { GoStar } from "react-icons/go";
+import { MdStarHalf } from "react-icons/md";
 import { useRouteMatch, Link } from "react-router-dom";
 
 const SingleCard = ({ restaurant, restId }) => {
@@ -7,7 +8,13 @@ const SingleCard = ({ restaurant, restId }) => {
 
   const { name, user_rating, featured_image } = restaurant;
 
-  //   const rounded
+  const newArr = [];
+  const toNum = Number(user_rating.aggregate_rating[0]);
+  const lastDigit = Number(user_rating.aggregate_rating[2]);
+
+  for (let i = 0; i < toNum; i++) {
+    newArr.push(1);
+  }
 
   const img = featured_image
     ? featured_image
@@ -17,12 +24,14 @@ const SingleCard = ({ restaurant, restId }) => {
     <div className="single-card">
       <h3>{name}</h3>
       <div className="rating">
-        <span>{`Rating:${""} ${user_rating.rating_text}`}</span>
-        <span>{user_rating.aggregate_rating}</span>
+        <span>{`Rating:`}</span>
+        <span>{user_rating.rating_text}</span>
+
         <span>
-          <GoStar />
-          <GoStar />
-          <GoStar />
+          {newArr.map((icon, i) => (
+            <GoStar key={i} />
+          ))}
+          {lastDigit >= 3 ? <MdStarHalf /> : ""}
         </span>
       </div>
       <div className="reviews-container">
@@ -32,7 +41,7 @@ const SingleCard = ({ restaurant, restId }) => {
       </div>
 
       <div className="more">
-        <Link to={`${url}/${restId}`}>see more</Link>
+        <Link to={`${url}/${restId}`}>Check reviews</Link>
       </div>
     </div>
   );
