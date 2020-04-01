@@ -55,7 +55,9 @@ function Restaurant (props) {
                 name: response.data.name,
                 aggregateRating: response.data.user_rating.aggregateRating,
                 ratingText: response.data.user_rating.rating_text,
-                address: response.data.location.address
+                address: response.data.location.address,
+                addressSearch: "https://www.google.com/maps/place/" + response.data.location.address.replace(/ /g, "+"),
+                rating: response.data.user_rating.aggregate_rating
             })
         })
     },[])
@@ -71,7 +73,6 @@ function Restaurant (props) {
             
             setReviews(
                allReviews.map((item) => {
-                   console.log(item.review)
                    return {
                         review: item.review.review_text,
                         result: sentiment.analyze(item.review.review_text),
@@ -83,23 +84,27 @@ function Restaurant (props) {
         })
     },[])
 
-
+    const arrRating = []
+    console.log(restData.addressSearch)
+    for (let i = 0; i < restData.rating; i++) {
+        arrRating.push(1);
+    }
 
     return(
         <>
         <div className = "restaurant-container">
             <h1>{restData.name}</h1>
             <div>
-                {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : <span className = "rating">
-                    <GoStar />  {/*TODO NEED TO HAVE THIS GENERATE THE RIGHT NUMBER OF STARS*/}
-                    <GoStar />
-                </span>}
+                {restData.ratingText === "Not rated" ? <p>Not yet rated</p> : null}
+                <span className = "rating">
+                    {arrRating.map(_ => <GoStar/>)} {/*This rounds up*/}
+                </span>
             </div>
             <div className = "restaurant-address">
                 <div>
                     <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
                 </div>
-                <button>Google Maps</button> {/*TODO this needs to be functional lol*/ }
+                <a href = {restData.addressSearch}><button> Google Maps</button></a> {/*TODO this needs to be functional lol*/ }
             </div>
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
                 <h2>Reviews</h2>

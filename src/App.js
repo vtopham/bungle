@@ -11,7 +11,7 @@ import Results from "./Components/Results";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [location, setLocation] = useState(281); //should be city-state with kabob casing
+  const [location, setLocation] = useState(281); //id of the city
 
   const [restaurantID, setRestaurantID] = useState(16821237); //this will be the number that zomato uses
   const [cuisineID, setCuisineID] = useState(25);
@@ -30,18 +30,6 @@ function App() {
           setZSearchResults={setZSearchResults}
         />
       </Route>
-
-      {/* <Header />
-      <Route exact path="/">
-        <Home
-          location={location}
-          setLocation={setLocation}
-          cuisineID={cuisineID}
-          setCuisineID={setCuisineID}
-          zSearchResults={zSearchResults}
-          setZSearchResults={setZSearchResults}
-        />
-      </Route> */}
 
       <Route path="/about">
         <About />
