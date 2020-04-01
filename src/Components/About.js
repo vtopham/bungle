@@ -4,7 +4,7 @@
 import React from "react";
 import Profile from "./Profile";
 
-function About(props) {
+function About() {
   return (
     <div className="about-container">
       <div className="profile-container">

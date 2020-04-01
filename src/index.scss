@@ -1,3 +1,4 @@
+
 $lg-lap-top: 1050px;
 $lap-top: 910px;
 $sm-lap-top: 800px;
@@ -351,3 +352,11 @@ footer {
 }
 
 //SOME STYLING FOR THE IMAGE
+
+@import "./sass/variables";
+@import "./sass/global";
+@import "./sass/header";
+@import "./sass/content";
+@import "./sass/footer";
+@import "./sass/about";
+

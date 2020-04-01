@@ -1,22 +1,10 @@
 //Only Anthony changes this code
 import React from "react";
 
-// import { useParams, useRouteMatch, Link } from "react-router-dom";
-
 import SingleCard from "./SingleCard";
 
 function Results(props) {
-  const {
-    location,
-    setLocation,
-    restaurantID,
-    setRestaurantID,
-    zSearchResults
-  } = props;
-
-  console.log("original ", zSearchResults);
-
-  //   const { path, url } = useRouteMatch();
+  const { restaurantID, zSearchResults } = props;
 
   return (
     <div className="result-container">
