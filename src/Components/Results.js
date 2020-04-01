@@ -14,7 +14,7 @@ function Results(props) {
     zSearchResults
   } = props;
 
-  console.log(props);
+  console.log("original ", zSearchResults);
 
   //   const { path, url } = useRouteMatch();
 
