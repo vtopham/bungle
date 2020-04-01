@@ -36,7 +36,7 @@ const SingleCard = ({ restaurant, restId }) => {
       </div>
       <div className="reviews-container">
         <div className="review">
-          <img src={img} alt={name} />
+          <img className = "card-image" src={img} alt={name} />
         </div>
       </div>
 

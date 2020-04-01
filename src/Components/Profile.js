@@ -2,7 +2,7 @@
 // created by Anthony
 import React from "react";
 
-const Profile = ({ image, name, github }) => {
+const Profile = ({ image, name, github, website, worst }) => {
   return (
     <div className="profile">
       <div className="bg-img">
@@ -16,7 +16,7 @@ const Profile = ({ image, name, github }) => {
           </a>
         </p>
         <p className="website">
-          <a href="google.com" target="_blank" rel="noopener noreferrer">
+          <a href={website} target="_blank" rel="noopener noreferrer">
             website
           </a>
         </p>
@@ -26,9 +26,7 @@ const Profile = ({ image, name, github }) => {
         <h3>my worse date</h3>
         <section>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
-            accusantium voluptatem similique, iure voluptate mollitia? Veritatis
-            maxime ullam magnam tenetur.
+            {worst}
           </p>
         </section>
       </div>

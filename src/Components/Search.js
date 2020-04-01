@@ -37,124 +37,105 @@ const LetsGo = styled.button`
 const CustomSelect = styled.div`
   width: 100%;
 
-  select {
-    width: 100%;
-    height: 2.4rem;
-    font-size: 1rem;
-    background: white;
-    border: 1px solid #36383b;
-  }
-`;
 
-function Search(props) {
-  const {
-    location,
-    setLocation,
-    cuisineID,
-    setCuisineID,
-    zSearchResults,
-    setZSearchResults
-  } = props;
+    select {
+        width: 100%;
+        height: 2.4rem;
+        font-size: 1rem;
+        background: white;
+        border: 1px solid #36383b;
+    }
+`
 
-  //Set up the drop-downs
-  const cities = {
-    289: "Boston, MA",
-    303: "Charlotte, NC",
-    292: "Chicago, IL",
-    1021: "Columbus, OH",
-    305: "Denver, CO",
-    285: "Detroit, MI",
-    277: "Houston, TX",
-    574: "Jacksonville, FL",
-    282: "Las Vegas, NV",
-    281: "Los Angeles, CA",
-    745: "Louisville, KY",
-    1138: "Nashville, TN",
-    280: "New York City, NY",
-    287: "Philadelphia, PA",
-    301: "Phoenix, AZ",
-    286: "Portland, OR",
-    304: "San Antonio, TX",
-    302: "San Diego, CA",
-    306: "San Francisco, CA",
-    279: "Seattle, WA",
-    283: "Washington DC"
-  };
+function Search (props) {
 
-  const [cuisines, setCuisines] = useState([]);
+    const {location, setLocation, cuisineID, setCuisineID, zSearchResults, setZSearchResults} = props
 
-  const header = {
-    //header for the axios request
-    method: "GET",
-    headers: {
-      "user-key": process.env.REACT_APP_API_KEY,
-      "Content-type": "application.json"
-    },
-    credentials: "same-origin"
-  };
+    //Set up the drop-downs
+    const cities = {
+        289: "Boston, MA",
+        303: "Charlotte, NC",
+        292: "Chicago, IL",
+        1021: "Columbus, OH",
+        305: "Denver, CO",
+        285: "Detroit, MI",
+        277: "Houston, TX",
+        574: "Jacksonville, FL",
+        282: "Las Vegas, NV",
+        281: "Los Angeles, CA",
+        745: "Louisville, KY",
+        1138: "Nashville, TN",
+        280: "New York City, NY",
+        287: "Philadelphia, PA",
+        301: "Phoenix, AZ",
+        286: "Portland, OR",
+        304: "San Antonio, TX",
+        302: "San Diego, CA",
+        306: "San Francisco, CA",
+        279: "Seattle, WA",
+        283: "Washington DC",
 
-  //update the location when the city is updated & cuisine
+    }
 
-  const updateCity = event => {
-    setLocation(event.target.value);
-  };
+    const [cuisines, setCuisines] = useState([])
 
-  const updateCuisine = event => {
-    setCuisineID(event.target.value);
-  };
+    const header = { //header for the axios request
+        method: 'GET',
+        headers: {
+            'user-key': '392a6e06ccc0d5d88a95d732a6bfc55d',
+            'Content-type': 'application.json',
+        },
+        credentials: 'same-origin'
+    }
 
-  //When the city is updated, do a get request and get a list of all cuisines - CUISINES REMOVED
+    //update the location when the city is updated & cuisine
 
-  // useEffect(() => {
-  //     axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${location}`, header)
-  //     .then((response) => {
-  //         setCuisines(response.data.cuisines)
-  //     })
-  // },[location])
+    const updateCity = (event) => {
+      setLocation(event.target.value); 
+      
+    }
 
-  //When the cuisine is chosen, query for the search **NOT EFFICIENT, DON'T CARE FOR NOW, WE GET 1000 CALLS A DAY**
+    const updateCuisine = (event) => {
+        setCuisineID(event.target.value)
+    }
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&sort=rating&order=asc`,
-        header
-      )
-      .then(response => {
-        const arrRestaurants = response.data.restaurants.filter(state => {
-          return state.restaurant.all_reviews_count > 5;
-        });
-        setZSearchResults(arrRestaurants);
-      });
-  }, [location]);
+    //When the city is updated, do a get request and get a list of all cuisines - CUISINES REMOVED
 
-  const array = [1, 2, 3];
-  return (
-    <>
-      <SearchForm id="search">
-        <SearchDiv className="input">
-          <label htmlFor="city">City</label>
-          <CustomSelect>
-            <select
-              onChange={updateCity}
-              id="city"
-              name="city"
-              placeholder="Las Vegas, NV"
-            >
-              {Object.keys(cities).map(key => {
-                {
-                  /*add all the cities from our hard coded object*/
-                }
-                return (
-                  <option key={key} value={key}>
-                    {cities[key]}
-                  </option>
-                );
-              })}
-            </select>
-          </CustomSelect>
-        </SearchDiv>
-        {/* <SearchDiv className = "input">
+    // useEffect(() => {
+    //     axios.get(`https://developers.zomato.com/api/v2.1/cuisines?city_id=${location}`, header)
+    //     .then((response) => {
+    //         setCuisines(response.data.cuisines)
+    //     })
+    // },[location])
+
+    //When the cuisine is chosen, query for the search **NOT EFFICIENT, DON'T CARE FOR NOW, WE GET 1000 CALLS A DAY**
+
+    useEffect(() => {
+        axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&sort=rating&order=asc`, header)
+        .then((response) => {
+            const arrRestaurants = response.data.restaurants.filter((state) => {
+                return state.restaurant.all_reviews_count > 3;
+            })
+            setZSearchResults(arrRestaurants);
+                
+        })
+    },[location])
+
+    const array = [1,2,3]
+    return(
+        <>
+        <SearchForm id = "search">
+            <SearchDiv className = "input"> 
+                <label htmlFor = "city">City</label>
+                <CustomSelect>
+                    <select  onChange = {updateCity} id = "city" name = "city" placeholder = "Las Vegas, NV">
+                        {Object.keys(cities).map((key) => { {/*add all the cities from our hard coded object*/}
+                            return (<option value = {key}>{cities[key]}</option>
+                        )})}
+                    </select>
+                </CustomSelect>
+            </SearchDiv>
+            {/* <SearchDiv className = "input">
                 <label htmlFor = "cuisine">Cuisine</label>
                 <CustomSelect>
                     <select onChange = {updateCuisine} id = "cuisine" name = "cuisine" placeholder = "Italian">
