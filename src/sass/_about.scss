@@ -1,0 +1,125 @@
+.about-container {
+  max-width: 1400px;
+  margin: 7rem auto;
+
+  .profile-container {
+    @include flex(space-around);
+    flex-wrap: wrap;
+    padding: 1rem;
+
+    @media (max-width: $lg-lap-top) {
+      justify-content: space-around;
+    }
+
+    @media (max-width: $sm-lap-top) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile {
+      width: 47%;
+      margin-bottom: 5rem;
+      padding: 1rem;
+      text-transform: capitalize;
+
+      @media (max-width: $sm-lap-top) {
+        width: 70%;
+      }
+
+      @media (max-width: $phone) {
+        margin-bottom: 2rem;
+      }
+
+      .bg-img {
+        width: 250px;
+
+        @media (max-width: $lg-lap-top) {
+          width: 250px;
+        }
+
+        @media (max-width: $phone) {
+          width: 200px;
+        }
+        margin: 0 auto;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      .profile-info {
+        text-align: center;
+        margin-top: 1.5rem;
+
+        @media (max-width: $phone) {
+          margin-top: 1rem;
+        }
+
+        p {
+          padding: 0.2rem 0;
+          font-size: 1.7rem;
+        }
+
+        .github {
+          padding: 0;
+        }
+        .website {
+          padding: 0;
+          margin-top: -0.7rem;
+        }
+      }
+
+      .worst-date {
+        margin: 1.5rem 0 0;
+
+        @media (max-width: $phone) {
+          margin: 1.5rem 0 0;
+        }
+
+        h3 {
+          margin: 1rem 0 1rem;
+          font-size: 1.4rem;
+          text-align: center;
+        }
+        p {
+          text-transform: lowercase;
+          width: 40%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .zomato {
+    text-align: center;
+    margin: 4rem 0;
+
+    @media (max-width: $phone) {
+      margin: 2rem 0;
+    }
+
+    .zomato-logo {
+      width: 35%;
+      height: 15vh;
+      margin: 2rem auto 0;
+      background: url("https://searchlogovector.com/wp-content/uploads/2019/05/zomato-logo-vector.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 5px;
+
+      @media (max-width: $phone) {
+        width: 90%;
+        height: 14vh;
+      }
+
+      a {
+        width: 55%;
+        height: 100%;
+        color: transparent;
+      }
+    }
+  }
+}

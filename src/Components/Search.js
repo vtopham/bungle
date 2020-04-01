@@ -1,48 +1,42 @@
 //Only Vic changes this code
 
-import React, {useEffect, useState} from "react"
-import {Link} from "react-router-dom"
-import styled from "styled-components"
-import axios from "axios"
-
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import axios from "axios";
 
 const SearchForm = styled.form`
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2% 0;
 
-    .input {
-        width: 35%;
-    }
-
-
-`
+  .input {
+    width: 35%;
+  }
+`;
 const SearchDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    label {
-        padding-bottom: 2%;
-    }
+  label {
+    padding-bottom: 2%;
+  }
 
-    margin-right: 4%;
-
-`
+  margin-right: 4%;
+`;
 const LetsGo = styled.button`
-    
-    background: gold;
-    border-radius: 10px;
-    height: 2.4rem;
-    width: 120px;
-    border: 1px solid gold;
-    font-size: 1.2rem;
-`
-
+  background: gold;
+  border-radius: 10px;
+  height: 2.4rem;
+  width: 120px;
+  border: 1px solid gold;
+  font-size: 1.2rem;
+`;
 
 const CustomSelect = styled.div`
-    width: 100%;
+  width: 100%;
+
 
     select {
         width: 100%;
@@ -152,14 +146,14 @@ function Search (props) {
                     </select>
                 </CustomSelect>
             </SearchDiv> */}
-            <SearchDiv>
-                <Link to = {`search/${location}`}>
-                    <LetsGo>Let's Go!</LetsGo>
-                </Link> 
-            </SearchDiv>
-        </SearchForm>
-        </>
-    )
+        <SearchDiv>
+          <Link to={`search/${location}`}>
+            <LetsGo>Let's Go!</LetsGo>
+          </Link>
+        </SearchDiv>
+      </SearchForm>
+    </>
+  );
 }
 
-export default Search
+export default Search;
