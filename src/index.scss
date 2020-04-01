@@ -140,6 +140,8 @@ header {
         img {
           width: 100%;
           height: 100%;
+
+          object-fit: contain;
         }
         //   }
       }
@@ -347,3 +349,5 @@ footer {
     }
   }
 }
+
+//SOME STYLING FOR THE IMAGE

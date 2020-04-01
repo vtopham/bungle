@@ -120,7 +120,7 @@ function Search (props) {
         axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&sort=rating&order=asc`, header)
         .then((response) => {
             const arrRestaurants = response.data.restaurants.filter((state) => {
-                return state.restaurant.all_reviews_count > 5;
+                return state.restaurant.all_reviews_count > 3;
             })
             setZSearchResults(arrRestaurants);
                 
