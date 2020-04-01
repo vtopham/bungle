@@ -51,13 +51,15 @@ function Restaurant (props) {
     useEffect(() => {
         axios.get(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantID}`, header)
         .then((response) => {
+            // console.log(response.data.featured_image)
             setRestData({
                 name: response.data.name,
                 aggregateRating: response.data.user_rating.aggregateRating,
                 ratingText: response.data.user_rating.rating_text,
                 address: response.data.location.address,
                 addressSearch: "https://www.google.com/maps/place/" + response.data.location.address.replace(/ /g, "+"),
-                rating: response.data.user_rating.aggregate_rating
+                rating: response.data.user_rating.aggregate_rating,
+                photo: response.data.featured_image
             })
         })
     },[])
@@ -99,12 +101,18 @@ function Restaurant (props) {
                     {arrRating.map(_ => <GoStar/>)} {/*This rounds up*/}
                 </span>
             </div>
-            <div className = "restaurant-address">
-                <div>
-                    <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
+
+            {/* <div className = "address-photo-container"> */}
+                <div className = "restaurant-address">
+                    <div>
+                        <p>{restData.address}</p> {/*TODO NEED TO HAVE THIS SPLIT INTO TWO LINES*/}
+                    </div>
+                    <a target = "_blank" href = {restData.addressSearch}><button> Google Maps</button></a> {/*TODO this needs to be functional lol*/ }
                 </div>
-                <a href = {restData.addressSearch}><button> Google Maps</button></a> {/*TODO this needs to be functional lol*/ }
-            </div>
+                <div className = "rest-photo">
+                    <img src = {`${restData.photo}`}/>
+                </div>
+            {/* </div> */}
             <div className = "restaurant-reviews"> {/*if the review had a negative sentiment, put here*/}
                 <h2>Reviews</h2>
                 {reviews.map((item) => {

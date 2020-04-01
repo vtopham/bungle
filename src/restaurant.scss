@@ -15,7 +15,7 @@ $phone: 500px;
     margin: 2% auto;
 
     div {
-        margin: 2% 0;
+        margin: 1% 0;
     }
 
     h1 {
@@ -40,14 +40,21 @@ $phone: 500px;
        
     }
 
+    // .address-photo-container {
+    //     display: flex;
+    //     align-items: flex-end;
+
+    // }
     .restaurant-address {
         display: flex;
         justify-content: left;
-        align-items: center;
-
+        align-items: flex-end;
+        
         a {
             margin-left: 4%;
         }
+
+        
         button {
             height: 50px;
             width: 120px;
@@ -90,6 +97,14 @@ $phone: 500px;
         }
     }
 
+
+    .rest-photo {
+        width: 40%;
+        img {
+            max-width: 100%;
+
+        }
+    }
   
 
 

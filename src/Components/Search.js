@@ -122,7 +122,6 @@ function Search (props) {
             const arrRestaurants = response.data.restaurants.filter((state) => {
                 return state.restaurant.all_reviews_count > 5;
             })
-            console.log(arrRestaurants);
             setZSearchResults(arrRestaurants);
                 
         })
