@@ -85,7 +85,6 @@ function Restaurant (props) {
     },[])
 
     const arrRating = []
-    console.log(restData.addressSearch)
     for (let i = 0; i < restData.rating; i++) {
         arrRating.push(1);
     }

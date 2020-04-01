@@ -59,8 +59,28 @@ function Search (props) {
 
     //Set up the drop-downs
     const cities = {
+        289: "Boston, MA",
+        303: "Charlotte, NC",
+        292: "Chicago, IL",
+        1021: "Columbus, OH",
+        305: "Denver, CO",
+        285: "Detroit, MI",
+        277: "Houston, TX",
+        574: "Jacksonville, FL",
+        282: "Las Vegas, NV",
         281: "Los Angeles, CA",
-        282: "Las Vegas, NV"
+        745: "Louisville, KY",
+        1138: "Nashville, TN",
+        280: "New York City, NY",
+        287: "Philadelphia, PA",
+        301: "Phoenix, AZ",
+        286: "Portland, OR",
+        304: "San Antonio, TX",
+        302: "San Diego, CA",
+        306: "San Francisco, CA",
+        279: "Seattle, WA",
+        283: "Washington DC",
+
     }
 
     const [cuisines, setCuisines] = useState([])
@@ -77,7 +97,8 @@ function Search (props) {
     //update the location when the city is updated & cuisine
 
     const updateCity = (event) => {
-      setLocation(event.target.value);  
+      setLocation(event.target.value); 
+      
     }
 
     const updateCuisine = (event) => {
@@ -99,7 +120,7 @@ function Search (props) {
         axios.get(`https://developers.zomato.com/api/v2.1/search?entity_id=${location}&entity_type=city&sort=rating&order=asc`, header)
         .then((response) => {
             const arrRestaurants = response.data.restaurants.filter((state) => {
-                return state.restaurant.all_reviews_count > 1;
+                return state.restaurant.all_reviews_count > 5;
             })
             console.log(arrRestaurants);
             setZSearchResults(arrRestaurants);

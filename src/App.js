@@ -11,11 +11,11 @@ import Results from "./Components/Results";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [location, setLocation] = useState(281); //id of the city
+  const [location, setLocation] = useState(277); //id of the city... this defaults to houston because right now that's what the list shows first
 
   const [restaurantID, setRestaurantID] = useState(16821237); //this will be the number that zomato uses
   const [cuisineID, setCuisineID] = useState(25);
-  const [zSearchResults, setZSearchResults] = useState("");
+  const [zSearchResults, setZSearchResults] = useState([]);
 
   return (
     <>
