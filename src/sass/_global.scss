@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Lato|Merriweather|Playfair+Display&display=swap");
+
+@import url("https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap");
+
+span,
+p,
+a,
+label,
+button {
+  font-size: 1.1rem;
+  color: #36383b;
+  font-family: "Lato", sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Merriweather", serif;
+  color: #36383b;
+}

@@ -1,0 +1,74 @@
+.result-container {
+  @include flex(space-around);
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 7rem auto;
+
+  .single-card {
+    border: 1px solid rgb(226, 225, 225);
+    width: 420px;
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+
+    @media (max-width: $lap-top) {
+      width: 400px;
+    }
+
+    @media (max-width: $sm-lap-top) {
+      width: 450px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    h3 {
+      text-align: center;
+      padding: 0.5rem 0 1rem;
+      border-bottom: 1px solid rgb(230, 227, 227);
+    }
+    .rating {
+      @include flex(space-around);
+      padding: 0.5rem 2.5rem;
+
+      span {
+        &:last-child {
+          color: gold;
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .reviews-container {
+      margin: 1rem 0;
+
+      .review-title {
+        text-align: center;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .review {
+        width: 100%;
+        height: 20vh;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .more {
+      @include flex(center);
+      margin: 1rem 0;
+
+      a {
+        text-transform: capitalize;
+        border: 1px solid gold;
+        padding: 0.4rem 1.8rem;
+        border-radius: 10px;
+        background: gold;
+      }
+    }
+  }
+}

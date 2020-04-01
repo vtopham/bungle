@@ -1,0 +1,35 @@
+footer {
+  background: gold;
+  color: #36383b;
+
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    @media (max-width: $phone) {
+      padding: 1rem;
+    }
+
+    p {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      text-align: center;
+
+      .copyright {
+        margin-right: 1rem;
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        text-transform: uppercase;
+        padding: 0.3rem 1rem 0 0;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
