@@ -36,7 +36,7 @@ function Restaurant(props) {
     //header for the axios request
     method: "GET",
     headers: {
-      "user-key": "process.env.REACT_APP_API_KEY",
+      "user-key": "392a6e06ccc0d5d88a95d732a6bfc55d",
       "Content-type": "application.json"
     },
     credentials: "same-origin"
