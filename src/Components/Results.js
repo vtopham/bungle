@@ -5,6 +5,7 @@ import SingleCard from "./SingleCard";
 
 function Results(props) {
   const { restaurantID, zSearchResults } = props;
+  
 
   return (
     <div className="result-container">
