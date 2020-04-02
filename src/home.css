@@ -1,0 +1,29 @@
+.home-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 60%;
+  margin: 2% auto;
+  min-height: 80vh;
+}
+
+@media (max-width: 500px) {
+  .home-container {
+    width: 100%;
+  }
+}
+
+.home-container h1 {
+  margin: 4% 0;
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.home-container p {
+  margin: 1% 0;
+}
+/*# sourceMappingURL=home.css.map */
