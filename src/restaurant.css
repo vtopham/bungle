@@ -1,0 +1,111 @@
+.rating {
+  color: gold;
+}
+
+.restaurant-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 60%;
+  margin: 2% auto;
+}
+
+.restaurant-container div {
+  margin: 1% 0;
+}
+
+.restaurant-container h1 {
+  margin: 2% 0;
+  font-size: 2.4rem;
+}
+
+.restaurant-container .go-back-home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.restaurant-container .go-back-home button {
+  background: gold;
+  border-radius: 10px;
+  height: 2.4rem;
+  width: 170px;
+  border: 1px solid gold;
+  font-size: 1.2rem;
+}
+
+.restaurant-container .restaurant-address {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.restaurant-container .restaurant-address a {
+  margin-left: 4%;
+}
+
+.restaurant-container .restaurant-address button {
+  height: 50px;
+  width: 120px;
+  color: white;
+  background: dodgerblue;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.restaurant-container .restaurant-reviews {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 80%;
+}
+
+.restaurant-container .restaurant-reviews * {
+  margin: 2% 0;
+}
+
+.restaurant-container .restaurant-reviews .full-review {
+  border-bottom: 1px solid #36383b;
+  padding: 2%;
+}
+
+.restaurant-container .restaurant-reviews .full-review:last-child {
+  border-bottom: none;
+}
+
+.restaurant-container .restaurant-reviews .rating {
+  margin-left: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.restaurant-container .restaurant-reviews .reviewer {
+  margin-left: 1rem;
+  font-style: italic;
+}
+
+.restaurant-container .rest-photo {
+  width: 40%;
+}
+
+.restaurant-container .rest-photo img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=restaurant.css.map */
