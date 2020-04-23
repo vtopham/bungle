@@ -59,3 +59,8 @@ function App() {
 }
 
 export default App;
+
+// TODO
+// -because i set it up to just use state instead of the URL path, if you refresh the results page it doesn't load again because state is gone
+// -the way that the get requests work mean that sometimes you see previous data before it has the new response
+// -adding a loading icon would go a long way
