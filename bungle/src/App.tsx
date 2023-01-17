@@ -5,11 +5,12 @@ import './App.scss';
 
 import Home from './pages/home';
 import Search from './pages/search';
+import Header from './components/header';
 
 function App() {
   return (
     <div className="App">
-        <h1>This is the app</h1>
+        <Header/>
         <Router>
             <Routes>
                 <Route path = "/search" element = {<Search/>}/>

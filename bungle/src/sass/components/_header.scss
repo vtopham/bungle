@@ -1,0 +1,32 @@
+.header-container div {
+    margin: 5px;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    
+    h2{
+        font-size: 2.4rem;
+    } 
+
+    input, button {
+        height: 100%;
+        font-size: 1.6rem;
+    }
+}
+
+
+
+//specific to the two part search styling
+.search-fields {
+
+        .left-input-end {
+            border-right: 1px solid $light-gray;
+            border-radius: 5% 0 0 5%;
+        }
+
+        .right-input-end {
+            border-left: none;
+            border-radius: 0 5% 5% 0;
+        }  
+
+}
